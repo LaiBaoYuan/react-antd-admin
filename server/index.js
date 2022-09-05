@@ -19,7 +19,7 @@ app.all("*",function(req,res,next){
 }); 
 
 app.post('/login',(req,res)=>{
-    return res.sendStatus(200)
+    return res.send('123adsw21e1d')
 })
 
 app.listen('9000',(err)=>{

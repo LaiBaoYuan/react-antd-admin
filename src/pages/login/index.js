@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import './index.less'
-import { handleLogin } from '@/redux/user'
+import { setToken } from '@/redux/user'
 import { connect } from 'react-redux';
+import { login } from '@/apis'
+import { userActions } from '../../redux/user';
 
 class Login extends Component {
   onFinish = (values) => {
     const { handleLogin } = this.props
-    console.log(handleLogin(values))
+    handleLogin(values)
   };
 
   onFinishFailed = (errorInfo) => {
@@ -42,9 +44,11 @@ class Login extends Component {
 }
 
 export default connect(
-  null,
-  {
-    handleLogin
-  }
-  // (dispatch)=>({handleLogin:(data)=>dispatch(handleLogin(data))})
+  (state)=>({...state}),
+  (dispatch)=>({
+    handleLogin:async (data)=>{
+      await login(data).then(res=>{
+        dispatch(setToken(res))
+      })
+    }})
 )(Login)

@@ -16,7 +16,6 @@ module.exports = {
   ],
   webpack: {
     alias: {
-      '@@': path.resolve('public'),
       '@': path.resolve('src'),
     }
   },

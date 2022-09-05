@@ -8,18 +8,18 @@ const Axios = axios.create({
 export default {
 
   get(url, params) {
-      return Axios.get(url, { params: params })
+    return Axios.get(url, { params: params })
   },
 
   post(url, data, config) {
-      return Axios.post(url, data, config || {})
+    return Axios.post(url, data, config || {})
   },
 
   put(url, data, config) {
-      return Axios.put(url, data, config || {})
+    return Axios.put(url, data, config || {})
   },
 
   delete(url, params) {
-      return Axios.delete(url, { params: params })
+    return Axios.delete(url, { params: params })
   }
 }

@@ -28,13 +28,14 @@ class RouteGuard extends Component {
     checkPermission(){
         NProgress.start()
         let { history: { replace, push }, user:{ token }, location } = this.props
+        console.log(this.props)
         const { pathname, search } = location
         let fullPath = encodeURIComponent(pathname + search)
-        // if(!routes.includes(pathname)){
-        //     replace('/404')
-        //     NProgress.done()
-        //     return
-        // }
+        if(!routes.includes(pathname)){
+            replace('/404')
+            NProgress.done()
+            return
+        }
         if(token){
             if(pathname === '/login'){
                 push('/')

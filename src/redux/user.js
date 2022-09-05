@@ -1,5 +1,4 @@
 import { setToken as setCookieToken, getToken, removeToken } from '@/utils/auth'
-import { login } from '@/apis'
 
 export const setId = (data) => {
     return {type: 'SET_ID',data};
@@ -16,19 +15,21 @@ export const setUsername = (data) => {
 export const setAvatar = (data) => {
     return {type: 'SET_AVATAR',data};
 };
-
-export const handleLogin = (data) => {
-    return {type: 'HANDLE_LOGIN',data}
+export class userActions {
+    static setId = (data) => ({type: 'SET_ID',data})
+    static setToken = (data) => ({type: 'SET_TOKEN',data})
+    static setUsername = (data) => ({type: 'SET_USERNAME',data})
+    static setAvatar = (data) => ({type: 'SET_AVATAR',data})
 }
 
 const initState = {
     id: '',
-    token: '',
+    token: '11',
     username: '',
-    avatar: '',
+    avatar: ''
 };
 
-const reducer = async (state = initState, action) => {
+const reducer = (state = initState, action) => {
     const { type, data } = action
     switch (type) {
         case 'SET_ID':
@@ -40,12 +41,6 @@ const reducer = async (state = initState, action) => {
             return {...state, username: data};
         case 'SET_AVATAR':
             return {...state, avatar: data};
-        case 'HANDLE_LOGIN':
-            return await new Promise((s,j)=>{
-                login(data).then(res=>{
-                    s(res)
-                }).catch(err=>j(err))
-            })
         default:
             return state;
     }
