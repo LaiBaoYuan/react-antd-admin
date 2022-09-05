@@ -22,10 +22,18 @@ class Sider extends Component {
     }
   }
 
+  onClick = ({keyPath}) => {
+    if(keyPath.length === 1){
+      this.setState({ openKeys: ''})
+    }
+  }
+
   render() {
     const { location,collapse,toggleCollapse } = this.props
     let currentRoutes = location.pathname.slice(1).split('/')
     let routesLength = currentRoutes.length
+    // console.log(currentRoutes.slice(0,routesLength-1))
+    // console.log(currentRoutes.slice(routesLength-1))
     return (
       <Layout.Sider
         id="sider" 
@@ -45,6 +53,7 @@ class Sider extends Component {
           mode="inline" 
           theme='dark'
           onOpenChange={this.onOpenChange}
+          onClick={this.onClick}
           ></Menu>
       </Layout.Sider>
     );

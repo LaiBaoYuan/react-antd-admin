@@ -1,6 +1,5 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware} from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
-import ActionTypes from './actionType';
 
 const initState = {}, reducer = {}
 

@@ -6,9 +6,9 @@ import {
 } from '@ant-design/icons';
 import { Route } from 'react-router-dom';
 
-const files = require.context('@/pages/', true, /index.js$/);
+const files = require.context('@/pages/', true, /\.js$/);
 export const routes = files.keys().map(key=>{
-    let path = key.replace('./','').replace('/index.js','')
+    let path = key.replace('./','').replace(/(\/index.js$)|(\.js$)/,'')
     return (
         <Route component={files(key).default} path={`/${path}`} key={path}></Route>
     )
@@ -21,22 +21,38 @@ export default [
         icon: <DashboardOutlined/>
     },
     {
-        label: '菜单项二',
-        key: 'login',
-        icon: <FileOutlined/>
-    },
-    {
-        label: '菜单项三',
-        key: 'test3',
+        label: 'Test1',
+        key: 'test1',
         icon: <PieChartOutlined/>,
         children: [
             { 
-                label: '子菜单项一',
+                label: 'Child1',
                 key: 'child1',
+                hidden:false
             },
             { 
-                label: '子菜单项一',
+                label: 'Child2',
                 key: 'child2',
+            }
+        ],
+    },
+    {
+        label: 'Test2',
+        key: 'test2',
+        icon: <PieChartOutlined/>,
+        children: [
+            { 
+                label: 'Child3',
+                key: 'child3',
+                hidden:false
+            },
+            { 
+                label: 'Child4',
+                key: 'child4',
+            },
+            { 
+                label: 'Child5',
+                key: 'child5',
             },
         ],
     },

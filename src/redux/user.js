@@ -15,12 +15,6 @@ export const setUsername = (data) => {
 export const setAvatar = (data) => {
     return {type: 'SET_AVATAR',data};
 };
-export class userActions {
-    static setId = (data) => ({type: 'SET_ID',data})
-    static setToken = (data) => ({type: 'SET_TOKEN',data})
-    static setUsername = (data) => ({type: 'SET_USERNAME',data})
-    static setAvatar = (data) => ({type: 'SET_AVATAR',data})
-}
 
 const initState = {
     id: '',

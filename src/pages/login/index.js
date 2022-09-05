@@ -5,7 +5,7 @@ import './index.less'
 import { setToken } from '@/redux/user'
 import { connect } from 'react-redux';
 import { login } from '@/apis'
-import { userActions } from '../../redux/user';
+// import { userActions } from '../../redux/user';
 
 class Login extends Component {
   onFinish = (values) => {

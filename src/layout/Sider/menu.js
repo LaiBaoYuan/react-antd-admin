@@ -19,7 +19,7 @@ function toRoutes(routes,parentPath = ''){
         let path = parentPath ? `${parentPath}/${v.key}` : `/${v.key}`
         if(v.children && v.children.length){
             arr.push(...toRoutes(v.children,path))
-        }else{
+        }else if(!v.hidden){
             arr.push(path)
         }
     })
