@@ -18,7 +18,7 @@ export const setAvatar = (data) => {
 
 const initState = {
     id: '',
-    token: '11',
+    token: '1111',
     username: '',
     avatar: ''
 };

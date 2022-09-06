@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { routes } from '@/layout/Sider/menu'
+console.log(routes)
 
 NProgress.configure({showSpinner:false})
 

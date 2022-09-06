@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import router from "@/router";
+import { deepClone } from '@/utils';
 
 function toLink(item, parentPath = '') {
     item.forEach(v => {
@@ -16,11 +17,12 @@ function toLink(item, parentPath = '') {
 function toRoutes(routes,parentPath = ''){
     let arr = []
     routes.forEach(v=>{
-        let path = parentPath ? `${parentPath}/${v.key}` : `/${v.key}`
+        const { key } = v
+        let resolvePath = parentPath ? `${parentPath}/${key}` : `/${key}`
         if(v.children && v.children.length){
-            arr.push(...toRoutes(v.children,path))
+            arr.push(...toRoutes(v.children,resolvePath))
         }else if(!v.hidden){
-            arr.push(path)
+            arr.push(resolvePath)
         }
     })
     return arr
@@ -28,4 +30,4 @@ function toRoutes(routes,parentPath = ''){
 
 export const routes = toRoutes(router)
 
-export default toLink(router)
+export default toLink(deepClone(router))

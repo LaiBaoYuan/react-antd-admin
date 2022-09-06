@@ -9,16 +9,18 @@ import { Route } from 'react-router-dom';
 const files = require.context('@/pages/', true, /\.js$/);
 export const routes = files.keys().map(key=>{
     let path = key.replace('./','').replace(/(\/index.js$)|(\.js$)/,'')
+    console.log(path)
     return (
-        <Route component={files(key).default} path={`/${path}`} key={path}></Route>
+        <Route component={files(key).default} path={`/${path}`} key={path} ></Route>
     )
 })
 
 export default [
     {
         label: 'Dashboard',
-        key: 'dashboard',
-        icon: <DashboardOutlined/>
+        key: 'dashboard1',
+        icon: <DashboardOutlined/>,
+        
     },
     {
         label: 'Test1',
@@ -53,6 +55,12 @@ export default [
             { 
                 label: 'Child5',
                 key: 'child5',
+                children:[
+                    { 
+                        label: 'Child6',
+                        key: 'child6',
+                    },
+                ]
             },
         ],
     },
